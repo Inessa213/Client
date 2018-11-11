@@ -3,6 +3,8 @@ package com.example.Client;
 
 import Model.ClientInfo;
 import Model.Greeting;
+import Model.TestHello;
+import Model.TestRe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,20 +16,34 @@ public class TESTController {
 
     @Autowired
     private ClientDAO clientDAO;
-
+    //private ListClientInfo listClientInfo;
     @RequestMapping(
-            value = "/test.action",
+            value = "/testHello",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE,
             method = RequestMethod.POST)
 
     @ResponseBody
-    public List<ClientInfo> testRisk(@RequestBody final Greeting request){
+    public TestRe testRisk(@RequestBody final TestHello request){
+        TestRe testRe = new TestRe();
+        testRe.setResponse("Hello, "+request.getUser());
 
+        return testRe;
+    }
+    @RequestMapping(
+            value = "/testFirstName",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            method = RequestMethod.POST)
 
-        List<ClientInfo> list = clientDAO.getClient(request.getFirst_name());
+    @ResponseBody
+    public ListClientInfo testRisk(@RequestBody final Greeting request){
 
-        return list;
+        ListClientInfo listClientInfo = new ListClientInfo();
+
+        listClientInfo.setClients(clientDAO.getClient(request.getFirstName()));
+
+        return listClientInfo;
     }
 
 }

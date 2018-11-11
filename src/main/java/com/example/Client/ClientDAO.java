@@ -20,12 +20,12 @@ public class ClientDAO extends JdbcDaoSupport {
     }
 
 
-    public List<ClientInfo> getClient(String first_name) {
+    public List<ClientInfo> getClient(String firstName) {
 
-        String sql = "Select * from client where first_name = '"+first_name+"'";
-        Object[] params = new Object[]{};
+        String sql = "Select id, first_name, last_name, patronumic, age from public.get_client_by_name_fn(?)";
+       // Object[] params = new Object[]{};
         ClientMapper mapper = new ClientMapper();
-        List<ClientInfo> list = this.getJdbcTemplate().query(sql, params, mapper);
+        List<ClientInfo> list = this.getJdbcTemplate().query(sql, mapper, firstName);
 
         return list;
 
