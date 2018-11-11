@@ -1,4 +1,4 @@
-package Model;
+package com.example.Client.Model;
 
 public class TestRe {
     private String response;

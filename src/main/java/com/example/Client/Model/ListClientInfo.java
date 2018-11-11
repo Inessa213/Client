@@ -1,6 +1,4 @@
-package com.example.Client;
-
-import Model.ClientInfo;
+package com.example.Client.Model;
 
 import java.util.List;
 

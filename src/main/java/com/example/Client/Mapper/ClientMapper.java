@@ -1,7 +1,7 @@
-package Mapper;
+package com.example.Client.Mapper;
 
 
-import Model.ClientInfo;
+import com.example.Client.Model.ClientInfo;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -17,7 +17,6 @@ public class ClientMapper implements RowMapper<ClientInfo> {
         String firstName = rs.getString("first_name");
         String lastName = rs.getString("last_name");
         String patronumic = rs.getString("patronumic");
-
         int age = rs.getInt("age");
 
         return new ClientInfo(id, firstName, lastName, patronumic, age);

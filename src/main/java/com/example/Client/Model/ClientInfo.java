@@ -1,7 +1,5 @@
-package Model;
+package com.example.Client.Model;
 
-
-import java.util.List;
 
 public class ClientInfo {
 
@@ -18,7 +16,6 @@ public class ClientInfo {
     public void setId(long id) {
         this.id = id;
     }
-
 
     public String getFirstName() {
         return firstName;
@@ -52,14 +49,12 @@ public class ClientInfo {
         this.age = age;
     }
 
-    public ClientInfo (long id, String firstName, String lastName, String patronumic, int age)
-    {
+    public ClientInfo(long id, String firstName, String lastName, String patronumic, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.patronumic = patronumic;
         this.age = age;
     }
-
 
 }

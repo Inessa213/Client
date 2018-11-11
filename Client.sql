@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.10
 -- Dumped by pg_dump version 9.6.0
 
--- Started on 2018-11-11 21:34:19
+-- Started on 2018-11-11 21:58:24
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -47,12 +47,11 @@ DECLARE
 id1 integer; 
 id_client integer;
 begin
-	id_client = (
-    select id from client as c
+	select id into id_client from client as c
 		WHERE
   			c.first_name = first_name1 AND 
   			c.last_name = last_name1 AND 
-  			c.patronumic = patronumic1);
+  			c.patronumic = patronumic1;
 	   	      
       if (id_client is NULL) then
       	RAISE EXCEPTION 'Клиент не найден! '; 
@@ -200,7 +199,7 @@ COPY address (id, client_id, city) FROM stdin;
 3	3	Poltava
 4	5	Kirovograd
 5	15	Donetsk
-41	6	Kiev
+42	6	Kiev
 \.
 
 
@@ -210,7 +209,7 @@ COPY address (id, client_id, city) FROM stdin;
 -- Name: address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('address_id_seq', 41, true);
+SELECT pg_catalog.setval('address_id_seq', 42, true);
 
 
 --
@@ -273,7 +272,7 @@ ALTER TABLE ONLY address
     ADD CONSTRAINT address_fk FOREIGN KEY (client_id) REFERENCES client(id);
 
 
--- Completed on 2018-11-11 21:34:21
+-- Completed on 2018-11-11 21:58:25
 
 --
 -- PostgreSQL database dump complete
