@@ -17,7 +17,6 @@ public class TESTController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE,
             method = RequestMethod.POST)
-
     @ResponseBody
     public TestRe testHello(@RequestBody final TestHello request) {
             TestRe testRe = new TestRe();
