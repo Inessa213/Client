@@ -5,7 +5,7 @@
 -- Dumped from database version 9.6.10
 -- Dumped by pg_dump version 9.6.0
 
--- Started on 2018-11-11 20:40:45
+-- Started on 2018-11-11 21:34:19
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -25,7 +25,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2154 (class 0 OID 0)
+-- TOC entry 2149 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -36,7 +36,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 205 (class 1255 OID 16547)
+-- TOC entry 204 (class 1255 OID 16547)
 -- Name: add_address_fn(text, text, text, text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -67,7 +67,7 @@ $$;
 ALTER FUNCTION public.add_address_fn(first_name1 text, last_name1 text, patronumic1 text, city text) OWNER TO postgres;
 
 --
--- TOC entry 202 (class 1255 OID 16539)
+-- TOC entry 201 (class 1255 OID 16539)
 -- Name: add_client_fn(text, text, text, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -88,7 +88,7 @@ $$;
 ALTER FUNCTION public.add_client_fn(first_name text, last_name text, patronumic text, age integer) OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1255 OID 16541)
+-- TOC entry 203 (class 1255 OID 16541)
 -- Name: get_client_by_name_fn(text); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -103,7 +103,7 @@ $$;
 ALTER FUNCTION public.get_client_by_name_fn(first_name1 text) OWNER TO postgres;
 
 --
--- TOC entry 203 (class 1255 OID 16542)
+-- TOC entry 202 (class 1255 OID 16542)
 -- Name: get_older_client_fn(); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -189,19 +189,7 @@ CREATE SEQUENCE client_id_seq
 ALTER TABLE client_id_seq OWNER TO postgres;
 
 --
--- TOC entry 189 (class 1259 OID 16506)
--- Name: test; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE test (
-    id integer
-);
-
-
-ALTER TABLE test OWNER TO postgres;
-
---
--- TOC entry 2144 (class 0 OID 16399)
+-- TOC entry 2140 (class 0 OID 16399)
 -- Dependencies: 186
 -- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -217,7 +205,7 @@ COPY address (id, client_id, city) FROM stdin;
 
 
 --
--- TOC entry 2155 (class 0 OID 0)
+-- TOC entry 2150 (class 0 OID 0)
 -- Dependencies: 188
 -- Name: address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -226,7 +214,7 @@ SELECT pg_catalog.setval('address_id_seq', 41, true);
 
 
 --
--- TOC entry 2143 (class 0 OID 16394)
+-- TOC entry 2139 (class 0 OID 16394)
 -- Dependencies: 185
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -242,7 +230,7 @@ COPY client (id, first_name, last_name, patronumic, age) FROM stdin;
 
 
 --
--- TOC entry 2156 (class 0 OID 0)
+-- TOC entry 2151 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -251,19 +239,7 @@ SELECT pg_catalog.setval('client_id_seq', 6, true);
 
 
 --
--- TOC entry 2147 (class 0 OID 16506)
--- Dependencies: 189
--- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY test (id) FROM stdin;
-6
-7
-\.
-
-
---
--- TOC entry 2024 (class 2606 OID 16469)
+-- TOC entry 2020 (class 2606 OID 16469)
 -- Name: address address_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -272,7 +248,7 @@ ALTER TABLE ONLY address
 
 
 --
--- TOC entry 2021 (class 2606 OID 16452)
+-- TOC entry 2017 (class 2606 OID 16452)
 -- Name: client client_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -281,7 +257,7 @@ ALTER TABLE ONLY client
 
 
 --
--- TOC entry 2022 (class 1259 OID 16406)
+-- TOC entry 2018 (class 1259 OID 16406)
 -- Name: address_client_id_key; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -289,7 +265,7 @@ CREATE UNIQUE INDEX address_client_id_key ON public.address USING btree (client_
 
 
 --
--- TOC entry 2025 (class 2606 OID 16460)
+-- TOC entry 2021 (class 2606 OID 16460)
 -- Name: address address_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -297,7 +273,7 @@ ALTER TABLE ONLY address
     ADD CONSTRAINT address_fk FOREIGN KEY (client_id) REFERENCES client(id);
 
 
--- Completed on 2018-11-11 20:40:49
+-- Completed on 2018-11-11 21:34:21
 
 --
 -- PostgreSQL database dump complete
